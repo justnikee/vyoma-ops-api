@@ -14,10 +14,10 @@ import (
 )
 
 func main() {
+	log.Println("🚀 NEW MAIN.GO CODE IS RUNNING (ENV FIX APPLIED)")
 	// loadign .env
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("❌ Error loading .env file")
+	if err := godotenv.Load(); err != nil {
+		log.Println("ℹ️ .env file not found, using environment variables")
 	}
 
 	// connecting to database
