@@ -74,24 +74,3 @@ Ready for production deployment
 
 yaml
 Copy code
-
----
-
-## 🧠 Why This README Matters
-
-This tells reviewers:
-- You understand infra
-- You understand security
-- You think like a backend engineer
-- You’re not a tutorial copier
-
-This alone separates you from **90% of repos**.
-
----
-
-## ✅ Commit Everything
-
-```bash
-git add docker-compose.yml README.md
-git commit -m "Add docker-compose and project README"
-git push

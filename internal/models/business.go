@@ -7,7 +7,7 @@ import (
 )
 
 type Business struct {
-	Id            uuid.UUID `json:"id"`
+	ID            uuid.UUID `json:"id"`
 	Name          string    `json:"name"`
 	State         string    `json:"state"`
 	IndustryType  string    `json:"industry_type"`

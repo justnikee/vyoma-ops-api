@@ -11,15 +11,29 @@ import (
 )
 
 func RegisterRoutes(r chi.Router) {
-	// deps
-
+	// repositories
 	businessRepo := &repositories.BusinessRepository{}
-	businessService := services.NewBusinessService(businessRepo)
-	businessHandler := handlers.NewBusinessHandler(businessService)
+	ruleRepo := &repositories.ComplianceRuleRepository{}
+	complianceRepo := &repositories.BusinessComplianceRepository{}
 
+	// services
+	businessService := services.NewBusinessService(
+		businessRepo,
+		ruleRepo,
+		complianceRepo,
+	)
+
+	complianceService := services.NewBusinessComplianceService(complianceRepo)
+
+	// handlers
+	businessHandler := handlers.NewBusinessHandler(businessService)
+	complianceHandler := handlers.NewBusinessComplianceHandler(complianceService)
+
+	// routes
 	r.Route("/businesses", func(r chi.Router) {
 		r.Post("/", businessHandler.CreateBusiness)
 		r.Get("/{id}", businessHandler.GetBusinessByID)
+		r.Get("/{id}/compliances", complianceHandler.ListByBusinessID)
 	})
 
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {

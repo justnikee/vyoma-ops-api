@@ -34,7 +34,7 @@ func (r *BusinessRepository) CreateBusiness(
 		business.State,
 		business.IndustryType,
 		business.TurnoverRange,
-	).Scan(&business.Id, &business.CreatedAt)
+	).Scan(&business.ID, &business.CreatedAt)
 
 	if err != nil {
 		return nil, err
@@ -63,7 +63,7 @@ func (r *BusinessRepository) GetBusinessByID(
 	var business models.Business
 
 	err := db.DB.QueryRow(ctx, query, id).Scan(
-		&business.Id,
+		&business.ID,
 		&business.Name,
 		&business.State,
 		&business.IndustryType,
